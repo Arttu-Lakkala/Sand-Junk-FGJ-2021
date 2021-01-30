@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/actual_homescreen_a_bit_different.wav-2e33d7f97ae85bf063d805cb2aa734f3.sample"
+
+[deps]
+
+source_file="res://Assets/audio/actual_homescreen_a_bit_different.wav"
+dest_files=[ "res://.import/actual_homescreen_a_bit_different.wav-2e33d7f97ae85bf063d805cb2aa734f3.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=true
+compress/mode=0
