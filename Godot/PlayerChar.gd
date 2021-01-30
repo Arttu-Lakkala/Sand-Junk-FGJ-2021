@@ -6,6 +6,7 @@ signal ScoreItems(player, items)
 var vel : Vector2 = Vector2()
 var speed = 100
 var wavePushed = false
+var pickingUp = false
 var items_held = []
 
 
@@ -13,16 +14,15 @@ onready var sprite = $AnimatedSprite
 
 
 func _physics_process(delta):
-	
+	vel.x = 0
+	vel.y = 0	
 	if wavePushed:
 		vel.x = 0
 		vel.y = 200
-		move_and_slide(vel, Vector2.UP)
 	
 	else:
 		# reset horizontal velocity
-		vel.x = 0
-		vel.y = 0
+		
 	
 		# movement inputs
 		if Input.is_action_pressed("left"):
@@ -35,10 +35,12 @@ func _physics_process(delta):
 			vel.y += speed
 		if Input.is_action_pressed("ItemPickup"):
 			emit_signal("PickUp", self)
-					
-		# applying the velocity
-		vel = move_and_slide(vel, Vector2.UP)
-	if(wavePushed):
+				
+				
+	vel = move_and_slide(vel, Vector2.UP)
+	if(pickingUp):
+		pass
+	elif(wavePushed):
 		sprite.play("water")
 	elif ((vel.y != 0)||(vel.x != 0)):
 		sprite.play("run")
@@ -58,6 +60,8 @@ func _on_Wave_body_exited(body):
 
 func addItem(item):
 	print(item, "Player picks up item")
+	pickingUp = true
+	sprite.play("pickup")
 	items_held.append(item)
 
 
