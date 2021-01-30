@@ -1,0 +1,3 @@
+# ignore all logs *.import
+# ignore all logs *.md5
+# ignore all logs *.stex
