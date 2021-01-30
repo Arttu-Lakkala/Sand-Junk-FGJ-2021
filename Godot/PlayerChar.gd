@@ -11,6 +11,7 @@ var items_held = []
 
 onready var sprite = $AnimatedSprite
 
+
 func _physics_process(delta):
 	
 	if wavePushed:
@@ -37,14 +38,10 @@ func _physics_process(delta):
 					
 		# applying the velocity
 		vel = move_and_slide(vel, Vector2.UP)
-	
-		#move_and_collide(vel * delta)
-	
+	if(wavePushed):
+		sprite.play("water")
+	elif ((vel.y != 0)||(vel.x != 0)):
 		sprite.play("run")
-	#animation
-	if (!wavePushed && ((vel.y != 0)||(vel.x != 0))):
-		sprite.play("run")
-	
 	else:
 		sprite.play("idle")
 

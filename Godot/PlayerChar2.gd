@@ -37,9 +37,6 @@ func _physics_process(delta):
 		# applying the velocity
 		vel = move_and_slide(vel, Vector2.UP)
 	
-		#move_and_collide(vel * delta)
-	
-		sprite.play("run")
 	#animation
 	if(wavePushed):
 		sprite.play("water")
@@ -53,9 +50,7 @@ func _on_Wave_body_entered(body):
 		$Drowning.play()
 		wavePushed = true
 
-
 func _on_Wave_body_exited(body):
 	if(body == self):
 		$Drowning.stop()
 		wavePushed = false
-

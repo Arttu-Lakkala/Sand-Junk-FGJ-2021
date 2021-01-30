@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=26 format=2]
 
 [ext_resource path="res://PlayerChar.tscn" type="PackedScene" id=1]
 [ext_resource path="res://PlayerChar.gd" type="Script" id=2]
@@ -9,15 +9,48 @@
 [ext_resource path="res://Assets/audio/sandjunk_test.wav" type="AudioStream" id=7]
 [ext_resource path="res://Assets/Font/Kalam-Bold.ttf" type="DynamicFontData" id=8]
 [ext_resource path="res://UI.gd" type="Script" id=9]
-[ext_resource path="res://AnimatedSprite1.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Assets/visual/PlayerCharacter/player1.png" type="Texture" id=10]
 [ext_resource path="res://AnimatedSprite_2.tscn" type="PackedScene" id=11]
 [ext_resource path="res://PlayerChar2.gd" type="Script" id=12]
+[ext_resource path="res://Assets/visual/PlayerCharacter/player1run2.png" type="Texture" id=13]
+[ext_resource path="res://Assets/visual/PlayerCharacter/player1run1.png" type="Texture" id=14]
+[ext_resource path="res://Assets/visual/PlayerCharacter/player1-distress.png" type="Texture" id=15]
+[ext_resource path="res://Assets/visual/PlayerCharacter/esineidenpoiminta7.png" type="Texture" id=16]
+[ext_resource path="res://Assets/visual/PlayerCharacter/esineidenpoiminta6.png" type="Texture" id=17]
+[ext_resource path="res://Assets/visual/PlayerCharacter/esineidenpoiminta4.png" type="Texture" id=18]
+[ext_resource path="res://Assets/visual/PlayerCharacter/esineidenpoiminta5.png" type="Texture" id=19]
+[ext_resource path="res://Assets/visual/PlayerCharacter/esineidenpoiminta3.png" type="Texture" id=20]
+[ext_resource path="res://Assets/visual/PlayerCharacter/esineidenpoiminta2.png" type="Texture" id=21]
+[ext_resource path="res://Assets/visual/PlayerCharacter/esineidenpoiminta.png" type="Texture" id=22]
 
-[sub_resource type="DynamicFont" id=1]
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 10 ) ],
+"loop": true,
+"name": "idle",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 10 ), ExtResource( 14 ), ExtResource( 13 ), ExtResource( 14 ) ],
+"loop": true,
+"name": "run",
+"speed": 9.0
+}, {
+"frames": [ ExtResource( 15 ) ],
+"loop": true,
+"name": "water",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 21 ), ExtResource( 22 ), ExtResource( 18 ), ExtResource( 19 ), ExtResource( 17 ), ExtResource( 16 ), ExtResource( 19 ), ExtResource( 18 ), ExtResource( 17 ), ExtResource( 20 ), ExtResource( 22 ), ExtResource( 20 ) ],
+"loop": true,
+"name": "pickup",
+"speed": 9.0
+} ]
+
+[sub_resource type="DynamicFont" id=2]
 size = 30
 font_data = ExtResource( 8 )
 
-[sub_resource type="RectangleShape2D" id=2]
+[sub_resource type="RectangleShape2D" id=3]
 extents = Vector2( 79.9108, 38.8317 )
 
 [node name="Main_Scene" type="Node2D"]
@@ -32,13 +65,19 @@ texture = ExtResource( 3 )
 [node name="PlayerChar" parent="." instance=ExtResource( 1 )]
 position = Vector2( 150, -50 )
 scale = Vector2( 0.2, 0.2 )
+z_index = 2
 script = ExtResource( 2 )
 
-[node name="AnimatedSprite" parent="PlayerChar" instance=ExtResource( 10 )]
+[node name="AnimatedSprite" type="AnimatedSprite" parent="PlayerChar"]
+position = Vector2( 45, 0 )
+scale = Vector2( 0.1, 0.1 )
+frames = SubResource( 1 )
+animation = "idle"
 
 [node name="Player2Char" parent="." instance=ExtResource( 1 )]
 position = Vector2( -150, -50 )
 scale = Vector2( 0.2, 0.2 )
+z_index = 2
 script = ExtResource( 12 )
 
 [node name="AnimatedSprite" parent="Player2Char" instance=ExtResource( 11 )]
@@ -78,7 +117,7 @@ margin_left = 474.189
 margin_top = 3.62161
 margin_right = 517.98
 margin_bottom = 51.6216
-custom_fonts/font = SubResource( 1 )
+custom_fonts/font = SubResource( 2 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Time"
 align = 1
@@ -91,8 +130,10 @@ position = Vector2( -319.916, 95.4716 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Towel"]
 position = Vector2( 715.635, -6.29962 )
-shape = SubResource( 2 )
+shape = SubResource( 3 )
 [connection signal="ScoreItems" from="PlayerChar" to="." method="_on_PlayerChar_ScoreItems"]
 [connection signal="body_entered" from="Wave" to="PlayerChar" method="_on_Wave_body_entered"]
+[connection signal="body_entered" from="Wave" to="Player2Char" method="_on_Wave_body_entered"]
 [connection signal="body_exited" from="Wave" to="PlayerChar" method="_on_Wave_body_exited"]
+[connection signal="body_exited" from="Wave" to="Player2Char" method="_on_Wave_body_exited"]
 [connection signal="body_entered" from="Towel" to="PlayerChar" method="_on_Towel_body_entered"]
