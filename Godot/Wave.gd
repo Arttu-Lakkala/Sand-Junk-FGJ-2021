@@ -20,8 +20,10 @@ func _physics_process (delta):
 			var moveDist = 0
 			if(rng.randi_range(0,3) == 3):
 				moveDist = 400
+				speed =200
 			else:
 				moveDist = 50
+				speed = 50
 			targetY = position.y + moveDist
 		
 		else:

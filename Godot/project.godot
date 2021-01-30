@@ -19,6 +19,10 @@ config/name="Fgj 2021"
 run/main_scene="res://Main_Scene.tscn"
 config/icon="res://icon.png"
 
+[display]
+
+window/size/resizable=false
+
 [input]
 
 left={
