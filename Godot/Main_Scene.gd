@@ -19,6 +19,10 @@ var itemList = []
 
 export var itemsPerTide : int
 
+func _ready():
+	if (Global.players==1):
+		get_node("Player2Char").queue_free()
+
 func _process(delta):
 	ui.set_time_text(Time - ((OS.get_unix_time() - time_start)))
 
@@ -41,5 +45,4 @@ func _on_PlayerChar_ScoreItems(player, items):
 	for item in items:
 		score += item
 	
-	Global.player1score 
-		
+	#Global.player1score 
