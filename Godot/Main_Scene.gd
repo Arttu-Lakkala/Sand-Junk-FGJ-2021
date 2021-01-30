@@ -42,3 +42,12 @@ func _spaw_Items():
 	
 	#new_item.global_transform.origin = Vector2(-30,-170)
 	#new_item2.global_transform.origin = Vector2(0,-150)
+
+
+func _on_PlayerChar_ScoreItems(player, items):
+	var score = 0
+	for item in items:
+		score += item
+	
+	Global.player1score 
+		
