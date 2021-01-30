@@ -1,5 +1,7 @@
 extends Node2D
 
+signal ClearItems
+
 var Item = load("res://item.tscn")
 var RNG = RandomNumberGenerator.new()
 
@@ -13,6 +15,8 @@ var itemList = []
 export var itemsPerTide : int
 
 func _spaw_Items():
+	
+	emit_signal("ClearItems")
 	
 	itemList.resize(itemsPerTide)
 	
