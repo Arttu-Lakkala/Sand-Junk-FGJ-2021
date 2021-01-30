@@ -1,8 +1,12 @@
 extends KinematicBody2D
 
+signal PickUp(picker)
+
 var vel : Vector2 = Vector2()
 var speed = 100
-var wavePushed = false;
+var wavePushed = false
+var available_items = []
+
 
 onready var sprite = $AnimatedSprite
 
@@ -27,7 +31,9 @@ func _physics_process(delta):
 			vel.y -= speed
 		if Input.is_action_pressed("down"):
 			vel.y += speed
-		
+		if Input.is_action_pressed("ItemPickup"):
+			emit_signal("PickUp", self)
+					
 		# applying the velocity
 		vel = move_and_slide(vel, Vector2.UP)
 	
