@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/sandjunk_test.wav-937f97f05f07637aaae8678a8bf091bb.sample"
+
+[deps]
+
+source_file="res://Assets/audio/sandjunk_test.wav"
+dest_files=[ "res://.import/sandjunk_test.wav-937f97f05f07637aaae8678a8bf091bb.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=true
+compress/mode=0
