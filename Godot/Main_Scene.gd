@@ -3,6 +3,11 @@ extends Node2D
 var Item = load("res://item.tscn")
 var RNG = RandomNumberGenerator.new()
 
+onready var ui = get_node("CanvasLayer/UI")
+onready var time_start = OS.get_unix_time()
+var Time = 60
+
+
 var xMin = -450
 var xMax = 450
 var yMin = -350
@@ -11,6 +16,10 @@ var yMax = -50
 var itemList = []
 
 export var itemsPerTide : int
+
+func _process(delta):
+	ui.set_time_text(Time - ((OS.get_unix_time() - time_start)))
+
 
 func _spaw_Items():
 	
