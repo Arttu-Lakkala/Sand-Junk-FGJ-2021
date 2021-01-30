@@ -1,36 +1,14 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=3 format=2]
 
-[ext_resource path="res://Assets/visual/PlayerCharacter/player1.png" type="Texture" id=1]
-[ext_resource path="res://Assets/visual/PlayerCharacter/player1run2.png" type="Texture" id=2]
-[ext_resource path="res://Assets/visual/PlayerCharacter/player1run1.png" type="Texture" id=3]
 [ext_resource path="res://Assets/audio/Splash.wav" type="AudioStream" id=4]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 30, 30 )
 
-[sub_resource type="SpriteFrames" id=2]
-animations = [ {
-"frames": [ ExtResource( 1 ) ],
-"loop": true,
-"name": "idle",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 1 ), ExtResource( 3 ), ExtResource( 2 ), ExtResource( 3 ) ],
-"loop": true,
-"name": "run",
-"speed": 5.0
-} ]
-
 [node name="KinematicBody2D" type="KinematicBody2D"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource( 1 )
-
-[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
-position = Vector2( 23.5452, -13.4954 )
-scale = Vector2( 0.1, 0.1 )
-frames = SubResource( 2 )
-animation = "idle"
 
 [node name="Drowning" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 4 )

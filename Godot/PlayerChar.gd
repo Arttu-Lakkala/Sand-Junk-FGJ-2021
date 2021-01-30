@@ -49,13 +49,15 @@ func _physics_process(delta):
 		sprite.play("idle")
 
 func _on_Wave_body_entered(body):
-	$Drowning.play()
-	wavePushed = true
+	if(body == self):
+		$Drowning.play()
+		wavePushed = true
 
 
 func _on_Wave_body_exited(body):
-	$Drowning.stop()
-	wavePushed = false
+	if(body == self):
+		$Drowning.stop()
+		wavePushed = false
 
 func addItem(item):
 	print(item, "Player picks up item")

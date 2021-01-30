@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://PlayerChar.tscn" type="PackedScene" id=1]
 [ext_resource path="res://PlayerChar.gd" type="Script" id=2]
@@ -9,6 +9,9 @@
 [ext_resource path="res://Assets/audio/sandjunk_test.wav" type="AudioStream" id=7]
 [ext_resource path="res://Assets/Font/Kalam-Bold.ttf" type="DynamicFontData" id=8]
 [ext_resource path="res://UI.gd" type="Script" id=9]
+[ext_resource path="res://AnimatedSprite1.tscn" type="PackedScene" id=10]
+[ext_resource path="res://AnimatedSprite_2.tscn" type="PackedScene" id=11]
+[ext_resource path="res://PlayerChar2.gd" type="Script" id=12]
 
 [sub_resource type="DynamicFont" id=1]
 size = 30
@@ -27,9 +30,18 @@ scale = Vector2( 0.157638, 0.11767 )
 texture = ExtResource( 3 )
 
 [node name="PlayerChar" parent="." instance=ExtResource( 1 )]
-position = Vector2( 181.633, -87.4531 )
+position = Vector2( 150, -50 )
 scale = Vector2( 0.2, 0.2 )
 script = ExtResource( 2 )
+
+[node name="AnimatedSprite" parent="PlayerChar" instance=ExtResource( 10 )]
+
+[node name="Player2Char" parent="." instance=ExtResource( 1 )]
+position = Vector2( -150, -50 )
+scale = Vector2( 0.2, 0.2 )
+script = ExtResource( 12 )
+
+[node name="AnimatedSprite" parent="Player2Char" instance=ExtResource( 11 )]
 
 [node name="Wave" parent="." instance=ExtResource( 4 )]
 position = Vector2( 0, -400 )
@@ -78,6 +90,7 @@ __meta__ = {
 position = Vector2( -319.916, 95.4716 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Towel"]
+position = Vector2( 715.635, -6.29962 )
 shape = SubResource( 2 )
 [connection signal="ScoreItems" from="PlayerChar" to="." method="_on_PlayerChar_ScoreItems"]
 [connection signal="body_entered" from="Wave" to="PlayerChar" method="_on_Wave_body_entered"]
