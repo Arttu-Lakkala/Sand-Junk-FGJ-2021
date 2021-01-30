@@ -21,9 +21,12 @@ func _physics_process (delta):
 			if(rng.randi_range(0,3) == 3):
 				moveDist = 400
 				speed =200
+				$CollisionShape2D/FoamEffect.amount  = 300
 			else:
 				moveDist = 50
 				speed = 50
+				$CollisionShape2D/FoamEffect.amount  = 100
+				
 			targetY = position.y + moveDist
 		
 		else:
