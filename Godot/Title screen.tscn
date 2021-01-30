@@ -1,12 +1,13 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Buttons/Button.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Buttons/Button2.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Assets/visual/PlayerCharacter/player1.png" type="Texture" id=3]
+[ext_resource path="res://player1.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Assets/visual/Items/Illustration.png" type="Texture" id=4]
 [ext_resource path="res://Assets/visual/Items/bodybicycle.png" type="Texture" id=5]
 [ext_resource path="res://Assets/Font/Kalam-Bold.ttf" type="DynamicFontData" id=6]
 [ext_resource path="res://Buttons/Button.gd" type="Script" id=7]
+[ext_resource path="res://Title screen.gd" type="Script" id=8]
 
 [sub_resource type="DynamicFont" id=1]
 size = 75
@@ -15,9 +16,15 @@ font_data = ExtResource( 6 )
 [node name="Title screen" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+script = ExtResource( 8 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="ColorRect" type="ColorRect" parent="."]
+margin_right = 1020.0
+margin_bottom = 589.0
+color = Color( 0.0431373, 0.4, 0.572549, 1 )
 
 [node name="Menu" type="VBoxContainer" parent="."]
 margin_left = 60.0
@@ -46,10 +53,7 @@ margin_left = 465.0
 margin_right = 915.0
 rect_min_size = Vector2( 450, 150 )
 
-[node name="player1" type="Sprite" parent="."]
-position = Vector2( 695.152, 427.628 )
-scale = Vector2( 0.05, 0.05 )
-texture = ExtResource( 3 )
+[node name="player1" parent="." instance=ExtResource( 3 )]
 
 [node name="Illustration" type="Sprite" parent="."]
 position = Vector2( 417.506, 450.32 )
@@ -77,4 +81,5 @@ align = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
-[connection signal="pressed" from="Menu/1Row/Button" to="Menu/1Row/Button" method="_on_Button_pressed"]
+[connection signal="pressed" from="Menu/1Row/Button" to="." method="_on_Button_pressed"]
+[connection signal="pressed" from="Menu/1Row/Button2" to="." method="_on_Button2_pressed"]
