@@ -1,8 +1,9 @@
 extends KinematicBody2D
 
 var vel : Vector2 = Vector2()
-
 var speed = 100
+
+onready var sprite = $AnimatedSprite
 
 func _physics_process(delta):
 	# reset horizontal velocity
@@ -21,3 +22,6 @@ func _physics_process(delta):
 
 	# applying the velocity
 	vel = move_and_slide(vel, Vector2.UP)
+
+	sprite.play("run")
+

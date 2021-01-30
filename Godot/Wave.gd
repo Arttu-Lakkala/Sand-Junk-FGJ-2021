@@ -4,10 +4,12 @@ var rng = RandomNumberGenerator.new()
 
 export var speed : int = 200
 
-
+onready var Main = get_parent()
  
 onready var startY : float = position.y
 onready var targetY : float = position.y
+
+
 
 func _physics_process (delta):
 
@@ -30,7 +32,10 @@ func _physics_process (delta):
 			targetY = position.y + moveDist
 		
 		else:
+			if (targetY==0):
+				Main._spaw_Items()
 			targetY = startY
+			
 		
 		
 func move_to (current, to, step):
