@@ -10,6 +10,7 @@
 
 [node name="Main_Scene" type="Node2D"]
 script = ExtResource( 6 )
+itemsPerTide = 4
 
 [node name="Sand" type="Sprite" parent="."]
 position = Vector2( 0, -150 )
