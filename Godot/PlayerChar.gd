@@ -1,11 +1,12 @@
 extends KinematicBody2D
 
 signal PickUp(picker)
+signal ScoreItems(player, items)
 
 var vel : Vector2 = Vector2()
 var speed = 100
 var wavePushed = false
-var available_items = []
+var items_held = []
 
 
 onready var sprite = $AnimatedSprite
@@ -56,3 +57,10 @@ func _on_Wave_body_exited(body):
 	$Drowning.stop()
 	wavePushed = false
 
+func addItem(item):
+	print(item, "Player picks up item")
+	items_held.append(item)
+
+
+func _on_Towel_body_entered(body):
+	emit_signal("ScoreItems", body, items_held)	

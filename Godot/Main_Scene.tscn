@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://PlayerChar.tscn" type="PackedScene" id=1]
 [ext_resource path="res://PlayerChar.gd" type="Script" id=2]
@@ -13,6 +13,9 @@
 [sub_resource type="DynamicFont" id=1]
 size = 30
 font_data = ExtResource( 8 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 79.9108, 38.8317 )
 
 [node name="Main_Scene" type="Node2D"]
 script = ExtResource( 6 )
@@ -43,7 +46,6 @@ position = Vector2( -918.068, -290.166 )
 stream = ExtResource( 7 )
 autoplay = true
 
-
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 follow_viewport_enable = true
 
@@ -71,5 +73,13 @@ align = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="Towel" type="Area2D" parent="."]
+position = Vector2( -319.916, 95.4716 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Towel"]
+shape = SubResource( 2 )
+[connection signal="ScoreItems" from="PlayerChar" to="." method="_on_PlayerChar_ScoreItems"]
 [connection signal="body_entered" from="Wave" to="PlayerChar" method="_on_Wave_body_entered"]
 [connection signal="body_exited" from="Wave" to="PlayerChar" method="_on_Wave_body_exited"]
+[connection signal="body_entered" from="Towel" to="PlayerChar" method="_on_Towel_body_entered"]
