@@ -23,15 +23,15 @@ func _physics_process(delta):
 		vel.y = 0
 	
 		# movement inputs
-		if Input.is_action_pressed("left"):
+		if Input.is_action_pressed("left2"):
 			vel.x -= speed
-		if Input.is_action_pressed("right"):
+		if Input.is_action_pressed("right2"):
 			vel.x += speed
-		if Input.is_action_pressed("up"):
+		if Input.is_action_pressed("up2"):
 			vel.y -= speed
-		if Input.is_action_pressed("down"):
+		if Input.is_action_pressed("down2"):
 			vel.y += speed
-		if Input.is_action_pressed("ItemPickup"):
+		if Input.is_action_pressed("ItemPickup2"):
 			emit_signal("PickUp", self)
 					
 		# applying the velocity
