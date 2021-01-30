@@ -29,3 +29,5 @@ script = ExtResource( 5 )
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2( 0, -150 )
 current = true
+[connection signal="body_entered" from="Wave" to="KinematicBody2D" method="_on_Wave_body_entered"]
+[connection signal="body_exited" from="Wave" to="KinematicBody2D" method="_on_Wave_body_exited"]
