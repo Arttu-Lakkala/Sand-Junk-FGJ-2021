@@ -34,11 +34,6 @@ animations = [ {
 "name": "idle",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 26 ) ],
-"loop": true,
-"name": "stun",
-"speed": 5.0
-}, {
 "frames": [ ExtResource( 15 ) ],
 "loop": true,
 "name": "water",
@@ -53,6 +48,11 @@ animations = [ {
 "loop": true,
 "name": "pickup",
 "speed": 10.0
+}, {
+"frames": [ ExtResource( 26 ) ],
+"loop": true,
+"name": "stun",
+"speed": 5.0
 } ]
 
 [sub_resource type="DynamicFont" id=2]
@@ -103,7 +103,6 @@ slowdownPerItem = 20.0
 [node name="AnimatedSprite" parent="Player2Char" instance=ExtResource( 11 )]
 position = Vector2( 0, -60 )
 scale = Vector2( 1, 1 )
-animation = "stun"
 
 [node name="Wave" parent="." instance=ExtResource( 4 )]
 position = Vector2( 0, -400 )
