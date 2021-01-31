@@ -23,6 +23,9 @@ func _ready():
 
 func _physics_process(delta):
 	
+	position.x = clamp(position.x, -475, 475)
+	position.y = clamp(position.y, -400, 150)
+	
 	vel.x = 0
 	vel.y = 0	
 	
