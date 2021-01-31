@@ -251,9 +251,9 @@ __meta__ = {
 }
 
 [node name="PlayerScore2" type="Label" parent="CanvasLayer/UI/Player2Info"]
-margin_left = -61.8611
+margin_left = -96.6574
 margin_top = -45.6923
-margin_right = 72.1389
+margin_right = 37.3426
 margin_bottom = 19.3077
 custom_fonts/font = SubResource( 3 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
@@ -284,9 +284,9 @@ texture = ExtResource( 23 )
 shape = SubResource( 5 )
 [connection signal="ScoreItems" from="PlayerChar" to="." method="_on_PlayerChar_ScoreItems"]
 [connection signal="ScoreItems" from="Player2Char" to="." method="_on_Player2Char_ScoreItems"]
-[connection signal="body_entered" from="Wave" to="Player2Char" method="_on_Wave_body_entered"]
 [connection signal="body_entered" from="Wave" to="PlayerChar" method="_on_Wave_body_entered"]
-[connection signal="body_exited" from="Wave" to="Player2Char" method="_on_Wave_body_exited"]
+[connection signal="body_entered" from="Wave" to="Player2Char" method="_on_Wave_body_entered"]
 [connection signal="body_exited" from="Wave" to="PlayerChar" method="_on_Wave_body_exited"]
+[connection signal="body_exited" from="Wave" to="Player2Char" method="_on_Wave_body_exited"]
 [connection signal="body_entered" from="Towel" to="PlayerChar" method="_on_Towel_body_entered"]
 [connection signal="body_entered" from="Towel2" to="Player2Char" method="_on_Towel2_body_entered"]
