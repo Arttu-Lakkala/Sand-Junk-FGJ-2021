@@ -4,10 +4,11 @@ signal ItemPicked(Item)
 
 export var poofDuration : float
 
-enum Itemtype{TIRE = 1, BIKE = 50, RANGE_END = 100}
+enum ItemProbability{TIRE = 1, BIKE = 50, RANGE_END = 100}
+enum ItemType{TIRE, BIKE}
 
 var RNG = RandomNumberGenerator.new()
-var type = Itemtype.BIKE
+var type = ItemType.BIKE
 var pickable = true
 var pickupTimer = 0.0
 var pickedUp = false
@@ -25,12 +26,14 @@ func _ready():
 	if(Global.players>1):
 		get_parent().find_node("Player2Char").connect("PickUp", self, "_onItemPick")
 	
-	self.type = RNG.randi_range(1, Itemtype.RANGE_END)
+	var rngItem = RNG.randi_range(1, ItemProbability.RANGE_END)
 		
-	if self.type < Itemtype.BIKE:
+	if rngItem < ItemProbability.BIKE:
+		self.type = ItemType.TIRE 
 		$Wheel.show()
 		$BikeBody.hide()
 	else:
+		self.type = ItemType.BIKE
 		$Wheel.hide()
 		$BikeBody.show()
 		
