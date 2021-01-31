@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=2]
+[gd_scene load_steps=34 format=2]
 
 [ext_resource path="res://PlayerChar.tscn" type="PackedScene" id=1]
 [ext_resource path="res://PlayerChar.gd" type="Script" id=2]
@@ -26,6 +26,8 @@
 [ext_resource path="res://Assets/visual/Items/greentowel-min.png" type="Texture" id=24]
 [ext_resource path="res://Assets/Font/Kalam-Regular.ttf" type="DynamicFontData" id=25]
 [ext_resource path="res://Assets/visual/PlayerCharacter/aftertheflood.png" type="Texture" id=26]
+[ext_resource path="res://Towel.gd" type="Script" id=27]
+[ext_resource path="res://Towel2.gd" type="Script" id=28]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
@@ -39,11 +41,6 @@ animations = [ {
 "name": "stun",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 10 ), ExtResource( 14 ), ExtResource( 13 ), ExtResource( 14 ) ],
-"loop": true,
-"name": "run",
-"speed": 9.0
-}, {
 "frames": [ ExtResource( 21 ), ExtResource( 22 ), ExtResource( 18 ), ExtResource( 19 ), ExtResource( 17 ), ExtResource( 16 ), ExtResource( 19 ), ExtResource( 18 ), ExtResource( 17 ), ExtResource( 20 ), ExtResource( 22 ), ExtResource( 20 ) ],
 "loop": true,
 "name": "pickup",
@@ -53,6 +50,11 @@ animations = [ {
 "loop": true,
 "name": "water",
 "speed": 5.0
+}, {
+"frames": [ ExtResource( 10 ), ExtResource( 14 ), ExtResource( 13 ), ExtResource( 14 ) ],
+"loop": true,
+"name": "run",
+"speed": 9.0
 } ]
 
 [sub_resource type="DynamicFont" id=2]
@@ -265,6 +267,7 @@ __meta__ = {
 
 [node name="Towel" type="Area2D" parent="."]
 position = Vector2( -400, 75 )
+script = ExtResource( 27 )
 
 [node name="greentowel-min" type="Sprite" parent="Towel"]
 position = Vector2( 9.39369e-05, -1.25986 )
@@ -276,6 +279,7 @@ shape = SubResource( 4 )
 
 [node name="Towel2" type="Area2D" parent="."]
 position = Vector2( 400, 75 )
+script = ExtResource( 28 )
 
 [node name="redtowel-min" type="Sprite" parent="Towel2"]
 scale = Vector2( 0.283166, 0.28149 )
@@ -285,9 +289,9 @@ texture = ExtResource( 23 )
 shape = SubResource( 5 )
 [connection signal="ScoreItems" from="PlayerChar" to="." method="_on_PlayerChar_ScoreItems"]
 [connection signal="ScoreItems" from="Player2Char" to="." method="_on_Player2Char_ScoreItems"]
-[connection signal="body_entered" from="Wave" to="PlayerChar" method="_on_Wave_body_entered"]
 [connection signal="body_entered" from="Wave" to="Player2Char" method="_on_Wave_body_entered"]
-[connection signal="body_exited" from="Wave" to="PlayerChar" method="_on_Wave_body_exited"]
+[connection signal="body_entered" from="Wave" to="PlayerChar" method="_on_Wave_body_entered"]
 [connection signal="body_exited" from="Wave" to="Player2Char" method="_on_Wave_body_exited"]
+[connection signal="body_exited" from="Wave" to="PlayerChar" method="_on_Wave_body_exited"]
 [connection signal="body_entered" from="Towel" to="PlayerChar" method="_on_Towel_body_entered"]
 [connection signal="body_entered" from="Towel2" to="Player2Char" method="_on_Towel2_body_entered"]

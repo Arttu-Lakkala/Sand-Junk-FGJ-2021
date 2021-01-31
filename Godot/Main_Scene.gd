@@ -19,15 +19,20 @@ var yMax = -50
 
 var itemList = []
 
+var bikeTexture = load("res://Assets/visual/Items/bodybicycle.png")
+var tyreTexture = load("res://Assets/visual/Items/Illustration.png")
+
 export var itemsPerTide : int
 
 func _ready():
 	Global.player1score = 0
-	Global.player2score = 0
+	Global.player2score = 0	
+
 	if (Global.players==1):
 		get_node("Player2Char").queue_free()
 		get_node("Towel2").queue_free()
 		get_node("CanvasLayer/UI/Player2Info").queue_free()
+		
 
 func _process(delta):
 	ui.set_time_text(Time - ((OS.get_unix_time() - time_start)))
@@ -59,12 +64,23 @@ func _spaw_Items():
 func _on_PlayerChar_ScoreItems(player, items):
 	for item in items:
 		#Global.player1score += item
-		Global.player1score += RNG.randi_range(ItemValues[item][0], ItemValues[item][1]) 
+		Global.player1score += RNG.randi_range(ItemValues[item][0], ItemValues[item][1])
+		
+		if item == 0:
+			$Towel.itemAdd(tyreTexture)
+		elif item == 1:
+			$Towel.itemAdd(bikeTexture)	
+			 
 	#print(Global.player1score)
 
 
 func _on_Player2Char_ScoreItems(player, items):
 	for item in items:
 		#Global.player2score += item 
-		Global.player2score += RNG.randi_range(ItemValues[item][0], ItemValues[item][1]) 
+		Global.player2score += RNG.randi_range(ItemValues[item][0], ItemValues[item][1])
+		
+		if item == 0:
+			$Towel2.itemAdd(tyreTexture)
+		elif item == 1:
+			$Towel2.itemAdd(bikeTexture)	 
 	#print(Global.player2score)
