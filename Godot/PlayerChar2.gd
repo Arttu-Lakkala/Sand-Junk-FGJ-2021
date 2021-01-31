@@ -67,6 +67,9 @@ func _on_Wave_body_entered(body):
 		items_held = []
 		$Drowning.play()
 		wavePushed = true
+		stunned = true
+		stunTimer = 1.0
+		self.calcSpeed()
 
 func _on_Wave_body_exited(body):
 	if(body == self):
@@ -78,6 +81,7 @@ func addItem(item):
 	pickupTimer = 1.5
 	sprite.play("pickup")
 	items_held.append(item)
+	self.calcSpeed()
 
 func _on_Towel2_body_entered(body):
 	if(body == self):
