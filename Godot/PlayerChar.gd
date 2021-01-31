@@ -63,7 +63,6 @@ func _physics_process(delta):
 			vel.y += speed
 		#ei nosteta jos liikaa tavaraa
 		if (Input.is_action_pressed("ItemPickup")&&(items_held.size()<maxItems)):
-			$Pickup.play()
 			emit_signal("PickUp", self)
 				
 				
@@ -102,6 +101,7 @@ func _on_Wave_body_exited(body):
 		stunTimer = 1.0
 
 func addItem(item):
+	$Pickup.play()
 	pickingUp = true
 	pickupTimer = 1.2
 	sprite.play("pickup")

@@ -61,7 +61,6 @@ func _physics_process(delta):
 		if Input.is_action_pressed("down2"):
 			vel.y += speed
 		if (Input.is_action_pressed("ItemPickup2")&&(items_held.size()<maxItems)):
-			$Pickup.play()
 			emit_signal("PickUp", self)
 					
 	# applying the velocity
@@ -100,6 +99,7 @@ func _on_Wave_body_exited(body):
 		stunTimer = 1.0
 
 func addItem(item):
+	$Pickup.play()
 	pickingUp = true
 	pickupTimer = 1.2
 	sprite.play("pickup")
@@ -115,6 +115,5 @@ func _on_Towel2_body_entered(body):
 		#poistetaan
 		items_held = []
 		self.calcSpeed()
-
 func calcSpeed():
 	self.speed = baseSpeed - (items_held.size() *  slowdownPerItem)
