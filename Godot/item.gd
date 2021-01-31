@@ -6,6 +6,7 @@ enum Itemtype{TIRE = 1, BIKE, BOOT}
 
 var type = Itemtype.TIRE 
 var pickable = true
+var pickupTimer = 0.0
 # Declare member variables here. Examples:
 
 # Called when the node enters the scene tree for the first time.
@@ -26,4 +27,7 @@ func _onItemPick(picker):
 	if(self.overlaps_body(picker) && self.pickable):
 		picker.addItem(type)
 		self.pickable = false
-		self.hide()
+		$Wheel.hide()
+		$AnimatedSprite.show()
+		$AnimatedSprite.play("poof")
+		

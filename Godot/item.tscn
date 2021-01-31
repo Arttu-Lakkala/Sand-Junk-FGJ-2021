@@ -1,10 +1,22 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Assets/visual/Items/Illustration.png" type="Texture" id=1]
 [ext_resource path="res://item.gd" type="Script" id=2]
+[ext_resource path="res://Assets/visual/Items/item3.png" type="Texture" id=3]
+[ext_resource path="res://Assets/visual/Items/item2.png" type="Texture" id=4]
+[ext_resource path="res://Assets/visual/Items/item4.png" type="Texture" id=5]
+[ext_resource path="res://Assets/visual/Items/item.png" type="Texture" id=6]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 80.9186
+
+[sub_resource type="SpriteFrames" id=2]
+animations = [ {
+"frames": [ ExtResource( 6 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 3 ) ],
+"loop": true,
+"name": "poof",
+"speed": 5.0
+} ]
 
 [node name="item" type="Area2D"]
 scale = Vector2( 0.3, 0.3 )
@@ -13,6 +25,13 @@ script = ExtResource( 2 )
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( -1.68182, -1.68176 )
 shape = SubResource( 1 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+visible = false
+scale = Vector2( 0.1, 0.1 )
+frames = SubResource( 2 )
+animation = "poof"
+frame = 3
 
 [node name="Wheel" type="Sprite" parent="."]
 position = Vector2( 5.17847, 1.9455 )

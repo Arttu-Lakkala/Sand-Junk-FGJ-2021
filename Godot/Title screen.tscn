@@ -55,6 +55,7 @@ margin_right = 915.0
 rect_min_size = Vector2( 450, 150 )
 
 [node name="player1" parent="." instance=ExtResource( 3 )]
+scale = Vector2( 0.6, 0.6 )
 
 [node name="Illustration" type="Sprite" parent="."]
 position = Vector2( 417.506, 450.32 )
