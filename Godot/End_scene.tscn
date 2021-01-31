@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://player1.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Assets/Font/Kalam-Bold.ttf" type="DynamicFontData" id=2]
@@ -13,9 +13,16 @@ size = 50
 outline_color = Color( 0.964706, 0.917647, 0.917647, 1 )
 font_data = ExtResource( 2 )
 
+[sub_resource type="DynamicFont" id=2]
+font_data = ExtResource( 2 )
+
 [node name="End_Scene" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+margin_left = 2.66968
+margin_top = -9.34389
+margin_right = 10.6697
+margin_bottom = 0.656128
 script = ExtResource( 5 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -148,6 +155,18 @@ margin_right = 610.452
 margin_bottom = 151.746
 custom_fonts/font = SubResource( 1 )
 text = "Highscore"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Credits" type="Label" parent="."]
+margin_left = 11.009
+margin_top = 588.335
+margin_right = 1035.01
+margin_bottom = 615.335
+size_flags_stretch_ratio = 0.0
+custom_fonts/font = SubResource( 2 )
+text = "Credits:     Visual Assets: Susanna Maria M.,     Audio Asset:  Peludo,     Programming: Vekku & Suohirviö"
 __meta__ = {
 "_edit_use_anchors_": false
 }
