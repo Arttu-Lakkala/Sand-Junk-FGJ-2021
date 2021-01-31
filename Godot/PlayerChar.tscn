@@ -3,7 +3,7 @@
 [ext_resource path="res://Assets/audio/Splash.wav" type="AudioStream" id=4]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 30, 30 )
+extents = Vector2( 80, 100 )
 
 [node name="KinematicBody2D" type="KinematicBody2D"]
 
