@@ -16,8 +16,10 @@ onready var sprite = $AnimatedSprite
 
 
 func _physics_process(delta):
+	
 	vel.x = 0
 	vel.y = 0	
+	
 	if wavePushed:
 		vel.x = 0
 		vel.y = 200
@@ -32,8 +34,6 @@ func _physics_process(delta):
 		
 	
 	else:
-		# reset horizontal velocity
-		
 	
 		# movement inputs
 		if Input.is_action_pressed("left"):
@@ -50,10 +50,11 @@ func _physics_process(delta):
 				
 				
 	vel = move_and_slide(vel, Vector2.UP)
-	if(pickingUp):
-		pass
-	elif(wavePushed):
+	#animation
+	if(wavePushed):
 		sprite.play("water")
+	elif(pickingUp):
+		pass
 	elif ((vel.y != 0)||(vel.x != 0)):
 		sprite.play("run")
 	else:

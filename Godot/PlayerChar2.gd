@@ -8,22 +8,30 @@ var speed = 100
 var maxItems = 3
 var wavePushed = false
 var pickingUp = false
+var pickupTimer = 0.0
 var items_held = []
 
 
 onready var sprite = $AnimatedSprite
 
 func _physics_process(delta):
+	vel.x = 0
+	vel.y = 0	
 	
 	if wavePushed:
 		vel.x = 0
 		vel.y = 200
-		move_and_slide(vel, Vector2.UP)
+	
+	elif pickupTimer > 0:
+		
+		pickupTimer -= delta
+		
+		if pickupTimer < 0:
+			pickupTimer = 0.0
+			pickingUp = false
+		
 	
 	else:
-		# reset horizontal velocity
-		vel.x = 0
-		vel.y = 0
 	
 		# movement inputs
 		if Input.is_action_pressed("left2"):
@@ -43,6 +51,8 @@ func _physics_process(delta):
 	#animation
 	if(wavePushed):
 		sprite.play("water")
+	elif(pickingUp):
+		pass
 	elif ((vel.y != 0)||(vel.x != 0)):
 		sprite.play("run")
 	else:
@@ -61,9 +71,9 @@ func _on_Wave_body_exited(body):
 
 func addItem(item):
 	pickingUp = true
+	pickupTimer = 1.5
 	sprite.play("pickup")
 	items_held.append(item)
-	print(items_held.size())
 
 func _on_Towel2_body_entered(body):
 	if(body == self):
