@@ -50,9 +50,10 @@ func _spaw_Items():
 	
 	for n in range(itemsPerTide):
 					
-		itemList[n] = Item.instance()
-		itemList[n].global_transform.origin = Vector2(RNG.randi_range(xMin, xMax), RNG.randi_range(yMin, yMax))
-		add_child(itemList[n])
+		var newItem = Item.instance()	#itemList[n] = Item.instance()
+		newItem.position = Vector2(RNG.randi_range(xMin, xMax), RNG.randi_range(yMin, yMax))
+		#itemList[n].global_transform.origin = Vector2(RNG.randi_range(xMin, xMax), RNG.randi_range(yMin, yMax))
+		add_child(newItem)
 
 
 func _on_PlayerChar_ScoreItems(player, items):
