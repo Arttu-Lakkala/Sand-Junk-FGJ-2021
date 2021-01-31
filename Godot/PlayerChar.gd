@@ -8,6 +8,7 @@ var speed = 100
 var maxItems = 3
 var wavePushed = false
 var pickingUp = false
+var pickupTimer = 0.0
 var items_held = []
 
 
@@ -20,6 +21,15 @@ func _physics_process(delta):
 	if wavePushed:
 		vel.x = 0
 		vel.y = 200
+	
+	elif pickupTimer > 0:
+		
+		pickupTimer -= delta
+		
+		if pickupTimer < 0:
+			pickupTimer = 0.0
+			pickingUp = false
+		
 	
 	else:
 		# reset horizontal velocity
@@ -62,12 +72,11 @@ func _on_Wave_body_exited(body):
 		wavePushed = false
 
 func addItem(item):
-	print(item, "Player picks up item")
 	pickingUp = true
+	pickupTimer = 1.5
 	sprite.play("pickup")
 	items_held.append(item)
-	print(items_held.size())
-	
+		
 func _on_Towel_body_entered(body):
 	if(body == self):
 		#jos tavaraa

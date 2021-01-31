@@ -52,9 +52,10 @@ func _spaw_Items():
 func _on_PlayerChar_ScoreItems(player, items):
 	for item in items:
 		Global.player1score += item 
-	print(Global.player1score)
+	#print(Global.player1score)
 
-func _on_PlayerChar2_ScoreItems(player, items):
+
+func _on_Player2Char_ScoreItems(player, items):
 	for item in items:
 		Global.player2score += item 
-	print(Global.player2score)
+	#print(Global.player2score)

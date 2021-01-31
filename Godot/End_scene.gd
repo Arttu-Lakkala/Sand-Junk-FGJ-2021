@@ -10,7 +10,7 @@ func _ready():
 		get_node("Label2_2").queue_free()
 		get_node("Score2").queue_free()
 	else:
-		$Socre2.text = str(Global.player2score)
+		$Score2.text = str(Global.player2score)
 
 func _on_AgainButton_pressed():
 	get_tree().change_scene("res://Title screen.tscn")

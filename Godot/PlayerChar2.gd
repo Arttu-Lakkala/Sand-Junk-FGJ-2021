@@ -1,6 +1,7 @@
 extends KinematicBody2D
 
 signal PickUp(picker)
+signal ScoreItems(player, items)
 
 var vel : Vector2 = Vector2()
 var speed = 100
@@ -59,7 +60,6 @@ func _on_Wave_body_exited(body):
 		wavePushed = false
 
 func addItem(item):
-	print(item, "Player picks up item")
 	pickingUp = true
 	sprite.play("pickup")
 	items_held.append(item)

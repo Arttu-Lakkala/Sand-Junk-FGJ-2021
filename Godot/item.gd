@@ -24,6 +24,6 @@ func _onClearItems():
 
 func _onItemPick(picker):
 	if(self.overlaps_body(picker) && self.pickable):
-		print(self, "Item is pickable!")
 		picker.addItem(type)
 		self.pickable = false
+		self.hide()
