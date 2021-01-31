@@ -101,6 +101,7 @@ baseSpeed = 125.0
 slowdownPerItem = 20.0
 
 [node name="AnimatedSprite" parent="Player2Char" instance=ExtResource( 11 )]
+position = Vector2( 0, -60 )
 scale = Vector2( 1, 1 )
 
 [node name="Wave" parent="." instance=ExtResource( 4 )]
