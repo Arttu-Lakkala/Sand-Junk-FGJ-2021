@@ -3,12 +3,14 @@ extends Area2D
 var rng = RandomNumberGenerator.new()
 
 export var speed : int = 200
-
+var waveStrength = 7
 onready var Main = get_parent()
  
 onready var startY : float = position.y
 onready var targetY : float = position.y
 
+onready var WaveSound =$mildWind
+onready var CrashSound =$BigWind
 
 
 func _physics_process (delta):
@@ -18,23 +20,34 @@ func _physics_process (delta):
 
 	# if we're at our target, move in the other direction
 	if position.y == targetY:
+		#alussa
 		if targetY == startY:
 			var moveDist = 0
-			if(rng.randi_range(0,3) == 3):
+			if(waveStrength >= 4):
+				CrashSound.play()
 				moveDist = 400
 				speed =200
-				$CollisionShape2D/FoamEffect.amount  = 300
 			else:
+				WaveSound.play()
 				moveDist = 50
-				speed = 50
-				$CollisionShape2D/FoamEffect.amount  = 100
+				speed = 25
 				
 			targetY = position.y + moveDist
-		
+			
+		#perillä 
 		else:
 			if (targetY==0):
+				waveStrength=0
+				$CollisionShape2D/FoamEffect.amount  = 100
 				Main._spaw_Items()
+			else:
+				waveStrength = (waveStrength + rng.randi_range(1,2))
+				if(waveStrength>=5):
+					$CollisionShape2D/FoamEffect.amount  = 300
+				else:
+					$CollisionShape2D/FoamEffect.amount  = 100
 			targetY = startY
+			
 			
 		
 		
