@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=2]
+[gd_scene load_steps=31 format=2]
 
 [ext_resource path="res://PlayerChar.tscn" type="PackedScene" id=1]
 [ext_resource path="res://PlayerChar.gd" type="Script" id=2]
@@ -22,6 +22,9 @@
 [ext_resource path="res://Assets/visual/PlayerCharacter/esineidenpoiminta3.png" type="Texture" id=20]
 [ext_resource path="res://Assets/visual/PlayerCharacter/esineidenpoiminta2.png" type="Texture" id=21]
 [ext_resource path="res://Assets/visual/PlayerCharacter/esineidenpoiminta.png" type="Texture" id=22]
+[ext_resource path="res://Assets/visual/Items/redtowel-min.png" type="Texture" id=23]
+[ext_resource path="res://Assets/visual/Items/greentowel-min.png" type="Texture" id=24]
+[ext_resource path="res://Assets/Font/Kalam-Regular.ttf" type="DynamicFontData" id=25]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
@@ -50,8 +53,15 @@ animations = [ {
 size = 30
 font_data = ExtResource( 8 )
 
+[sub_resource type="DynamicFont" id=5]
+size = 40
+font_data = ExtResource( 25 )
+
+[sub_resource type="RectangleShape2D" id=4]
+extents = Vector2( 80, 40 )
+
 [sub_resource type="RectangleShape2D" id=3]
-extents = Vector2( 79.9108, 38.8317 )
+extents = Vector2( 80, 40 )
 
 [node name="Main_Scene" type="Node2D"]
 script = ExtResource( 6 )
@@ -63,7 +73,7 @@ scale = Vector2( 0.157638, 0.11767 )
 texture = ExtResource( 3 )
 
 [node name="PlayerChar" parent="." instance=ExtResource( 1 )]
-position = Vector2( 150, -50 )
+position = Vector2( -200, 50 )
 scale = Vector2( 0.2, 0.2 )
 z_index = 2
 script = ExtResource( 2 )
@@ -75,7 +85,7 @@ frames = SubResource( 1 )
 animation = "idle"
 
 [node name="Player2Char" parent="." instance=ExtResource( 1 )]
-position = Vector2( -150, -50 )
+position = Vector2( 200, 50 )
 scale = Vector2( 0.2, 0.2 )
 z_index = 2
 script = ExtResource( 12 )
@@ -125,15 +135,146 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="PlayerInfo" type="Control" parent="CanvasLayer/UI"]
+margin_top = 50.0
+margin_right = 100.0
+margin_bottom = 150.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Amount" type="Label" parent="CanvasLayer/UI/PlayerInfo"]
+margin_right = 100.0
+margin_bottom = 90.0
+custom_fonts/font = SubResource( 5 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "3"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Space" type="Label" parent="CanvasLayer/UI/PlayerInfo"]
+margin_top = 50.0
+margin_right = 100.0
+margin_bottom = 140.0
+custom_fonts/font = SubResource( 5 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "3"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Line" type="Label" parent="CanvasLayer/UI/PlayerInfo"]
+margin_left = 31.0
+margin_top = 34.977
+margin_right = 71.0
+margin_bottom = 99.977
+custom_fonts/font = SubResource( 5 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "-"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PlayerScore" type="Label" parent="CanvasLayer/UI/PlayerInfo"]
+margin_left = 9.34387
+margin_top = -42.7149
+margin_right = 143.344
+margin_bottom = 22.2851
+custom_fonts/font = SubResource( 5 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Score: 0"
+
+[node name="Player2Info" type="Control" parent="CanvasLayer/UI"]
+margin_left = 937.0
+margin_top = 58.0
+margin_right = 1025.0
+margin_bottom = 150.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Amount2" type="Label" parent="CanvasLayer/UI/Player2Info"]
+margin_right = 100.0
+margin_bottom = 90.0
+custom_fonts/font = SubResource( 5 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "3"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Space2" type="Label" parent="CanvasLayer/UI/Player2Info"]
+margin_top = 50.0
+margin_right = 100.0
+margin_bottom = 140.0
+custom_fonts/font = SubResource( 5 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "3"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Line2" type="Label" parent="CanvasLayer/UI/Player2Info"]
+margin_left = 31.0
+margin_top = 35.0
+margin_right = 71.0
+margin_bottom = 100.0
+custom_fonts/font = SubResource( 5 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "-"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PlayerScore2" type="Label" parent="CanvasLayer/UI/Player2Info"]
+margin_left = -78.698
+margin_top = -45.6923
+margin_right = 55.302
+margin_bottom = 19.3077
+custom_fonts/font = SubResource( 5 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Score: 0"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="Towel" type="Area2D" parent="."]
-position = Vector2( -319.916, 95.4716 )
+position = Vector2( -400, 75 )
+
+[node name="greentowel-min" type="Sprite" parent="Towel"]
+position = Vector2( 9.39369e-05, -1.25986 )
+scale = Vector2( 0.285216, 0.281379 )
+texture = ExtResource( 24 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Towel"]
-position = Vector2( 715.635, -6.29962 )
+shape = SubResource( 4 )
+
+[node name="Towel2" type="Area2D" parent="."]
+position = Vector2( 400, 75 )
+
+[node name="redtowel-min" type="Sprite" parent="Towel2"]
+scale = Vector2( 0.283166, 0.28149 )
+texture = ExtResource( 23 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Towel2"]
 shape = SubResource( 3 )
 [connection signal="ScoreItems" from="PlayerChar" to="." method="_on_PlayerChar_ScoreItems"]
-[connection signal="body_entered" from="Wave" to="PlayerChar" method="_on_Wave_body_entered"]
 [connection signal="body_entered" from="Wave" to="Player2Char" method="_on_Wave_body_entered"]
-[connection signal="body_exited" from="Wave" to="PlayerChar" method="_on_Wave_body_exited"]
+[connection signal="body_entered" from="Wave" to="PlayerChar" method="_on_Wave_body_entered"]
 [connection signal="body_exited" from="Wave" to="Player2Char" method="_on_Wave_body_exited"]
+[connection signal="body_exited" from="Wave" to="PlayerChar" method="_on_Wave_body_exited"]
 [connection signal="body_entered" from="Towel" to="PlayerChar" method="_on_Towel_body_entered"]
+[connection signal="body_entered" from="Towel2" to="Player2Char" method="_on_Towel2_body_entered"]

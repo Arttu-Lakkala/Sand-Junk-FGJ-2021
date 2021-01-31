@@ -5,6 +5,7 @@ signal ScoreItems(player, items)
 
 var vel : Vector2 = Vector2()
 var speed = 100
+var maxItems = 3
 var wavePushed = false
 var pickingUp = false
 var items_held = []
@@ -33,7 +34,8 @@ func _physics_process(delta):
 			vel.y -= speed
 		if Input.is_action_pressed("down"):
 			vel.y += speed
-		if Input.is_action_pressed("ItemPickup"):
+		#ei nosteta jos liikaa tavaraa
+		if (Input.is_action_pressed("ItemPickup")&&(items_held.size()<maxItems)):
 			emit_signal("PickUp", self)
 				
 				
@@ -49,6 +51,7 @@ func _physics_process(delta):
 
 func _on_Wave_body_entered(body):
 	if(body == self):
+		items_held = []
 		$Drowning.play()
 		wavePushed = true
 
@@ -63,7 +66,13 @@ func addItem(item):
 	pickingUp = true
 	sprite.play("pickup")
 	items_held.append(item)
-
-
+	print(items_held.size())
+	
 func _on_Towel_body_entered(body):
-	emit_signal("ScoreItems", body, items_held)	
+	if(body == self):
+		#jos tavaraa
+		if(items_held.size()>0):
+			#lähetetään
+			emit_signal("ScoreItems", body, items_held)
+		#poistetaan
+		items_held = []
