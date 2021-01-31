@@ -65,5 +65,6 @@ func _on_PlayerChar_ScoreItems(player, items):
 
 func _on_Player2Char_ScoreItems(player, items):
 	for item in items:
-		Global.player2score += item 
+		#Global.player2score += item 
+		Global.player2score += RNG.randi_range(ItemValues[item][0], ItemValues[item][1]) 
 	#print(Global.player2score)

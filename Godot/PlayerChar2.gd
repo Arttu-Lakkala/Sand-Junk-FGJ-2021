@@ -18,7 +18,14 @@ export var  slowdownPerItem : float
 
 onready var sprite = $AnimatedSprite
 
+func _ready():
+	var speed = self.calcSpeed()
+
 func _physics_process(delta):
+		
+	position.x = clamp(position.x, -475, 475)
+	position.y = clamp(position.y, -400, 150)
+	
 	vel.x = 0
 	vel.y = 0	
 	
@@ -57,8 +64,8 @@ func _physics_process(delta):
 			$Pickup.play()
 			emit_signal("PickUp", self)
 					
-		# applying the velocity
-		vel = move_and_slide(vel, Vector2.UP)
+	# applying the velocity
+	vel = move_and_slide(vel, Vector2.UP)
 	
 	#animation and sound
 	if(stunned):

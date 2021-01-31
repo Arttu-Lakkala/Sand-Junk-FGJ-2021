@@ -102,7 +102,6 @@ slowdownPerItem = 20.0
 
 [node name="AnimatedSprite" parent="Player2Char" instance=ExtResource( 11 )]
 scale = Vector2( 1, 1 )
-animation = "stun"
 
 [node name="Wave" parent="." instance=ExtResource( 4 )]
 position = Vector2( 0, -400 )
