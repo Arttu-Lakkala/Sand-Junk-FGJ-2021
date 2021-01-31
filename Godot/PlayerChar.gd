@@ -38,6 +38,7 @@ func _physics_process(delta):
 		
 		if stunTimer < 0.0:
 			stunned = false
+			get_node("CollisionShape2D/StunParticles").set_emitting(false)
 			stunTimer = 0
 		
 	
@@ -62,9 +63,11 @@ func _physics_process(delta):
 		if Input.is_action_pressed("down"):
 			vel.y += speed
 		#ei nosteta jos liikaa tavaraa
-		if (Input.is_action_pressed("ItemPickup")&&(items_held.size()<maxItems)):
-			emit_signal("PickUp", self)
-				
+		if (Input.is_action_pressed("ItemPickup")):
+			if((items_held.size()<maxItems)):
+				emit_signal("PickUp", self)
+			else:
+				$NoPickup.play()
 				
 	vel = move_and_slide(vel, Vector2.UP)
 	#animation and sound
@@ -95,6 +98,7 @@ func _on_Wave_body_exited(body):
 	if(body == self):
 		$Drowning.stop()
 		$Stunned.play()
+		get_node("CollisionShape2D/StunParticles").set_emitting(true)
 		sprite.play("stun")
 		wavePushed = false
 		stunned = true

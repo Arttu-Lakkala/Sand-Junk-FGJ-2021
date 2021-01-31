@@ -81,13 +81,15 @@ texture = ExtResource( 3 )
 [node name="PlayerChar" parent="." instance=ExtResource( 1 )]
 position = Vector2( -200, 50 )
 scale = Vector2( 0.2, 0.2 )
-z_index = 2
+z_index = 3
 script = ExtResource( 2 )
 baseSpeed = 125.0
 slowdownPerItem = 20.0
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="PlayerChar"]
 position = Vector2( 0, -60 )
+z_index = 2
+z_as_relative = false
 frames = SubResource( 1 )
 animation = "idle"
 playing = true
@@ -95,7 +97,7 @@ playing = true
 [node name="Player2Char" parent="." instance=ExtResource( 1 )]
 position = Vector2( 200, 50 )
 scale = Vector2( 0.2, 0.2 )
-z_index = 2
+z_index = 3
 script = ExtResource( 12 )
 baseSpeed = 125.0
 slowdownPerItem = 20.0
@@ -103,6 +105,8 @@ slowdownPerItem = 20.0
 [node name="AnimatedSprite" parent="Player2Char" instance=ExtResource( 11 )]
 position = Vector2( 0, -60 )
 scale = Vector2( 1, 1 )
+z_index = 2
+z_as_relative = false
 
 [node name="Wave" parent="." instance=ExtResource( 4 )]
 position = Vector2( 0, -400 )
