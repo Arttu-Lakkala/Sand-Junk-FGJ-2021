@@ -22,6 +22,7 @@ animations = [ {
 [node name="item" type="Area2D"]
 scale = Vector2( 0.3, 0.3 )
 script = ExtResource( 2 )
+poofDuration = 1.5
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( -1.68182, -1.68176 )
