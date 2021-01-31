@@ -77,6 +77,8 @@ position = Vector2( -200, 50 )
 scale = Vector2( 0.2, 0.2 )
 z_index = 2
 script = ExtResource( 2 )
+baseSpeed = 125.0
+slowdownPerItem = 10.0
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="PlayerChar"]
 position = Vector2( 45, 0 )
