@@ -33,6 +33,10 @@ func _process(delta):
 	if(Global.players>1):
 		ui.set_player2($Player2Char.items_held.size() ,$Player2Char.maxItems)
 	if(Time-(OS.get_unix_time() - time_start)==0):
+		if(Global.player1score>Global.highScore):
+			Global.highScore = Global.player1score
+		if(Global.player2score>Global.highScore):
+			Global.highScore = Global.player2score
 		get_tree().change_scene("res://End_scene.tscn")
 	
 

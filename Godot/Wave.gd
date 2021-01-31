@@ -42,8 +42,8 @@ func _physics_process (delta):
 				Main._spaw_Items()
 			else:
 				waveStrength = (waveStrength + rng.randi_range(1,2))
-				if(waveStrength>=5):
-					$CollisionShape2D/FoamEffect.amount  = 300
+				if(waveStrength>=4):
+					$CollisionShape2D/FoamEffect.amount  = 600
 				else:
 					$CollisionShape2D/FoamEffect.amount  = 100
 			targetY = startY

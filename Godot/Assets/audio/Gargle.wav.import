@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Gargle.wav-2238929329a57356ada3c416374f459f.sample"
+
+[deps]
+
+source_file="res://Assets/audio/Gargle.wav"
+dest_files=[ "res://.import/Gargle.wav-2238929329a57356ada3c416374f459f.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

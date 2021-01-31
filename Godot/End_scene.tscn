@@ -108,6 +108,18 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="HighScore" type="Label" parent="."]
+margin_left = 371.683
+margin_top = 153.358
+margin_right = 608.683
+margin_bottom = 314.358
+custom_fonts/font = SubResource( 1 )
+text = "0"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="AgainButton" parent="." instance=ExtResource( 3 )]
 margin_left = 389.473
 margin_top = 279.461
@@ -128,5 +140,16 @@ autoplay = true
 position = Vector2( 853.998, 423.623 )
 scale = Vector2( 0.7, 0.7 )
 texture = ExtResource( 7 )
+
+[node name="Highscore" type="Label" parent="."]
+margin_left = 400.452
+margin_top = 70.7465
+margin_right = 610.452
+margin_bottom = 151.746
+custom_fonts/font = SubResource( 1 )
+text = "Highscore"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 [connection signal="pressed" from="AgainButton" to="." method="_on_AgainButton_pressed"]
 [connection signal="pressed" from="EndButton" to="." method="_on_EndButton_pressed"]

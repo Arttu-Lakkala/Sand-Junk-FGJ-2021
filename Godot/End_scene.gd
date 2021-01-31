@@ -4,6 +4,7 @@ extends Control
 func _ready():
 	var socre1 =$Score1
 	socre1.text = str(Global.player1score)
+	$HighScore.text = str(Global.highScore)
 	if (Global.players==1):
 		get_node("player2").queue_free()
 		get_node("Label1_2").queue_free()
