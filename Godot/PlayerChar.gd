@@ -4,16 +4,22 @@ signal PickUp(picker)
 signal ScoreItems(player, items)
 
 var vel : Vector2 = Vector2()
-var speed = 100
 var maxItems = 3
 var wavePushed = false
 var pickingUp = false
+var stunned = false
 var pickupTimer = 0.0
+var stunTimer = 0.0
 var items_held = []
+var speed = 100
 
+export var baseSpeed : float
+export var  slowdownPerItem : float
 
 onready var sprite = $AnimatedSprite
 
+func _ready():
+	var speed = self.calcSpeed()
 
 func _physics_process(delta):
 	
@@ -23,6 +29,14 @@ func _physics_process(delta):
 	if wavePushed:
 		vel.x = 0
 		vel.y = 200
+	
+	elif stunned:
+		stunTimer -= delta
+		
+		if stunTimer < 0.0:
+			stunned = false
+			stunTimer = 0
+		
 	
 	elif pickupTimer > 0:
 		
@@ -65,6 +79,9 @@ func _on_Wave_body_entered(body):
 		items_held = []
 		$Drowning.play()
 		wavePushed = true
+		stunned = true
+		stunTimer = 1.0
+		self.calcSpeed()
 
 
 func _on_Wave_body_exited(body):
@@ -77,6 +94,7 @@ func addItem(item):
 	pickupTimer = 1.5
 	sprite.play("pickup")
 	items_held.append(item)
+	self.calcSpeed()
 		
 func _on_Towel_body_entered(body):
 	if(body == self):
@@ -86,3 +104,7 @@ func _on_Towel_body_entered(body):
 			emit_signal("ScoreItems", body, items_held)
 		#poistetaan
 		items_held = []
+		self.calcSpeed()
+func calcSpeed():
+	
+	self.speed = baseSpeed - (items_held.size() *  25)
