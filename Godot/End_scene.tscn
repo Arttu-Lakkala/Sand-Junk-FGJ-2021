@@ -22,10 +22,10 @@ __meta__ = {
 }
 
 [node name="ColorRect" type="ColorRect" parent="."]
-margin_left = 9.34387
-margin_top = 2.66968
-margin_right = 1034.34
-margin_bottom = 611.67
+margin_left = -5.0
+margin_top = 3.0
+margin_right = 1035.0
+margin_bottom = 612.0
 rect_pivot_offset = Vector2( 296.035, 406.271 )
 color = Color( 0.0431373, 0.4, 0.572549, 1 )
 __meta__ = {
@@ -34,6 +34,7 @@ __meta__ = {
 
 [node name="player1" parent="." instance=ExtResource( 1 )]
 position = Vector2( 154.243, 432.112 )
+scale = Vector2( 0.7, 0.7 )
 
 [node name="Lable1" type="Label" parent="."]
 margin_left = 41.9774
@@ -125,7 +126,7 @@ autoplay = true
 
 [node name="player2" type="Sprite" parent="."]
 position = Vector2( 853.998, 423.623 )
-scale = Vector2( 0.05, 0.05 )
+scale = Vector2( 0.7, 0.7 )
 texture = ExtResource( 7 )
 [connection signal="pressed" from="AgainButton" to="." method="_on_AgainButton_pressed"]
 [connection signal="pressed" from="EndButton" to="." method="_on_EndButton_pressed"]

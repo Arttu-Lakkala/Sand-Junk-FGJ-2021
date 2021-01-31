@@ -105,6 +105,6 @@ func _on_Towel_body_entered(body):
 		#poistetaan
 		items_held = []
 		self.calcSpeed()
+
 func calcSpeed():
-	
-	self.speed = baseSpeed - (items_held.size() *  25)
+	self.speed = baseSpeed - (items_held.size() *  slowdownPerItem)

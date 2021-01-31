@@ -21,7 +21,7 @@ orbit_velocity_random = 0.0
 
 [node name="SandOcean" type="Sprite" parent="."]
 position = Vector2( -4.76837e-07, -227.513 )
-scale = Vector2( 0.156502, 0.107102 )
+scale = Vector2( 1.57, 1.07 )
 texture = ExtResource( 1 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

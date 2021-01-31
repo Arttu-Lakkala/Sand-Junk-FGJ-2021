@@ -4,13 +4,17 @@ signal PickUp(picker)
 signal ScoreItems(player, items)
 
 var vel : Vector2 = Vector2()
-var speed = 100
 var maxItems = 3
 var wavePushed = false
 var pickingUp = false
+var stunned = false
 var pickupTimer = 0.0
+var stunTimer = 0.0
 var items_held = []
+var speed = 100
 
+export var baseSpeed : float
+export var  slowdownPerItem : float
 
 onready var sprite = $AnimatedSprite
 
@@ -77,9 +81,13 @@ func addItem(item):
 
 func _on_Towel2_body_entered(body):
 	if(body == self):
-		#jos tavaraa
+			#jos tavaraa
 		if(items_held.size()>0):
 			#lähetetään
 			emit_signal("ScoreItems", body, items_held)
 		#poistetaan
 		items_held = []
+		self.calcSpeed()
+
+func calcSpeed():
+	self.speed = baseSpeed - (items_held.size() *  slowdownPerItem)
