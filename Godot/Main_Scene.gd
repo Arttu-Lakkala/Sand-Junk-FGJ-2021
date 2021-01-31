@@ -5,6 +5,8 @@ signal ClearItems
 var Item = load("res://item.tscn")
 var RNG = RandomNumberGenerator.new()
 
+var ItemValues = [[15, 30], [45, 60]]
+
 onready var ui = get_node("CanvasLayer/UI")
 onready var time_start = OS.get_unix_time()
 var Time = 60
@@ -12,7 +14,7 @@ var Time = 60
 
 var xMin = -450
 var xMax = 450
-var yMin = -350
+var yMin = -315
 var yMax = -50
 
 var itemList = []
@@ -48,14 +50,16 @@ func _spaw_Items():
 	
 	for n in range(itemsPerTide):
 					
-		itemList[n] = Item.instance()
-		itemList[n].global_transform.origin = Vector2(RNG.randi_range(xMin, xMax), RNG.randi_range(yMin, yMax))
-		add_child(itemList[n])
+		var newItem = Item.instance()	#itemList[n] = Item.instance()
+		newItem.position = Vector2(RNG.randi_range(xMin, xMax), RNG.randi_range(yMin, yMax))
+		#itemList[n].global_transform.origin = Vector2(RNG.randi_range(xMin, xMax), RNG.randi_range(yMin, yMax))
+		add_child(newItem)
 
 
 func _on_PlayerChar_ScoreItems(player, items):
 	for item in items:
-		Global.player1score += item 
+		#Global.player1score += item
+		Global.player1score += RNG.randi_range(ItemValues[item][0], ItemValues[item][1]) 
 	#print(Global.player1score)
 
 
